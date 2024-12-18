@@ -7,7 +7,7 @@ export class AppService {
 
   async checkDatabaseConnection() {
     try {
-      await this.dataSource.initialize();  // Initialize DataSource
+      await this.dataSource.initialize();
       const isConnected = await this.dataSource.isInitialized;
       if (isConnected) {
         console.log('Database connected successfully.');
