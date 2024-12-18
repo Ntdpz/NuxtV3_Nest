@@ -1,1 +1,8 @@
-สวัสดีครับ
+CREATE TABLE tasks (
+    id INT AUTO_INCREMENT PRIMARY KEY,   -- ID ของ task (Primary Key)
+    text VARCHAR(255) NOT NULL,          -- ข้อความของ task
+    completed BOOLEAN DEFAULT FALSE,    -- สถานะว่าทำเสร็จหรือไม่
+    editing BOOLEAN DEFAULT FALSE,     -- สถานะแก้ไขหรือไม่
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- เวลาที่สร้าง
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- เวลาที่แก้ไข
+);

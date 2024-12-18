@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: example_root_password
+      MYSQL_DATABASE: todo_db
+      MYSQL_USER: todo_user
+      MYSQL_PASSWORD: todo_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306" # Expose MySQL port for external access
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_container
+    ports:
+      - "8080:80" # Expose phpMyAdmin port for external access
+    environment:
+      PMA_HOST: mysql_container # ให้เชื่อมต่อกับ MySQL container
+      PMA_USER: todo_user
+      PMA_PASSWORD: todo_password
+    restart: always
+
+volumes:
+  mysql_data:
+    driver: local
